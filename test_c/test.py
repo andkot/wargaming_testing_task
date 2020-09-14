@@ -51,6 +51,11 @@ def fill_new_step(matrix, d=-1):
 
 
 def print_table(m, n, d):
+    matrix = []
+    matrix.append([0])
+    min_size = min(m, n)
+    if d >= min_size:
+        d = -1
     for i in range(m + n):
         make_new_step(matrix)
         fill_new_step(matrix, d)
@@ -62,12 +67,16 @@ def print_table(m, n, d):
 
 
 def print_is_winner(m, n, d):
+    matrix = []
+    matrix.append([0])
+    min_size = min(m, n)
+    if d >= min_size:
+        d = -1
     for i in range(n + m):
         make_new_step(matrix)
         fill_new_step(matrix, d)
 
-    print(matrix[n - 1][m - 1])
-
+    return matrix[n - 1][m - 1]
 
 # m = 10
 # n = 6

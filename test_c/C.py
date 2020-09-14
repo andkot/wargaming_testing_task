@@ -3,14 +3,10 @@ m = [0] * output_number
 n = [0] * output_number
 for i in range(output_number):
     m[i], n[i] = map(int, input().split())
-
-
-
+# #
+#
 # from test_c.test import *
-
-
-def step_conter(m, n):
-    return m + n - 2
+# from random import randint
 
 
 def min_side(m, n):
@@ -27,17 +23,12 @@ def max_side(m, n):
         return m
 
 
-def diagonal_step(diagonal):
-    return diagonal * 2
-
-
 def is_winner(m, n, diagonal):
     _min_side = min_side(m, n)
     _max_side = max_side(m, n)
-    _diagonal_step = diagonal_step(diagonal)
-    _step_count = step_conter(m, n)
+    _step_count = m + n
 
-    if diagonal > _min_side:
+    if diagonal >= _min_side:
         if _step_count % 2 == 0:
             return '-'
         else:
@@ -56,34 +47,48 @@ def is_winner(m, n, diagonal):
                 return '-'
 
     if (diagonal + 1) % 2 == 0:
-        if _min_side % 2 == 0 or _max_side % 2 == 0:
+        if (_min_side % 2 == 0) or (_max_side % 2 == 0):
             return '+'
         else:
-            if (_max_side - _min_side) % 2 == 0:
-                return '+'
-            else:
-                return '-'
+            return '-'
     else:
-        if _min_side % 2 == 0 or _max_side % 2 == 0:
+        if (_min_side % 2 != 0) or (_max_side % 2 != 0):
             return '+'
         else:
-            if (_max_side - _min_side) % 2 == 0:
-                return '+'
-            else:
-                return '-'
+            return '-'
 
 
-# m = 10
-# n = 10
-# d = 10
-#
-#
+# m = 5
+# n = 6
+# d = 3
 #
 # print(is_winner(m, n, d))
-# print_is_winner(m, n, d)
+# print(print_is_winner(m, n, d))
 #
-# print_table(m,n,d)
+# print_table(m, n, d)
 
+
+#
+#
+# def refactorer(n):
+#     if n == 0:
+#         return '-'
+#     else:
+#         return '+'
+
+
+# while True:
+#     m = randint(1, 10)
+#     n = randint(1, 100)
+#     d = randint(1, 100)
+#     ref = refactorer(print_is_winner(m, n, d))
+#     is_win = is_winner(m, n, d)
+#     print(ref, is_win)
+#     if ref != is_win:
+#         break
+#
+# print(m, n, d)
+# #
 for i in range(output_number):
     print(is_winner(m[i], n[i], diagonal))
     # print_is_winner(m[i], n[i], diagonal)
