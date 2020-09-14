@@ -1,10 +1,6 @@
 matrix = []
 matrix.append([0])
 
-m = 5
-n = 3
-d = 100
-
 
 def make_new_step(matrix):
     tmp_len = len(matrix)
@@ -34,7 +30,6 @@ def fill_new_step(matrix, d=-1):
         matrix[i][last] = check_next_step(up) or check_next_step(left) or check_next_step(diagonal)
         up = matrix[i][last]
 
-
     # horizontal side
     left = 1
     diagonal = 1
@@ -45,23 +40,39 @@ def fill_new_step(matrix, d=-1):
         matrix[last][i] = check_next_step(up) or check_next_step(left) or check_next_step(diagonal)
         left = matrix[last][i]
 
-
     # root element
     up = matrix[last - 1][last]
     left = matrix[last][last - 1]
-    if last >= d and d>0:
+    if last >= d and d > 0:
         diagonal = matrix[last - d][last - d]
     else:
         diagonal = 1
     matrix[last][last] = check_next_step(up) or check_next_step(left) or check_next_step(diagonal)
 
 
-d = 10
-n = 100
+def print_table(m, n, d):
+    for i in range(m + n):
+        make_new_step(matrix)
+        fill_new_step(matrix, d)
 
-for i in range(n):
-    make_new_step(matrix)
-    fill_new_step(matrix, d)
+    for i in range(n):
+        for j in range(m):
+            print(matrix[i][j], end=' ')
+        print()
 
-for row in matrix:
-    print(row)
+
+def print_is_winner(m, n, d):
+    for i in range(n + m):
+        make_new_step(matrix)
+        fill_new_step(matrix, d)
+
+    print(matrix[n - 1][m - 1])
+
+
+# m = 10
+# n = 6
+# d = 1
+#
+# print_table(m, n, d)
+# print('--')
+# print_is_winner(m, n, d)
