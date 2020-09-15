@@ -25,7 +25,7 @@ def fill_new_step(matrix, d=-1):
     diagonal = 1
     for i in range(last):
         left = matrix[i][last - 1]
-        if i == d:
+        if i >= d and d > 0:
             diagonal = matrix[i - d][last - d]
         matrix[i][last] = check_next_step(up) or check_next_step(left) or check_next_step(diagonal)
         up = matrix[i][last]
@@ -35,7 +35,7 @@ def fill_new_step(matrix, d=-1):
     diagonal = 1
     for i in range(last):
         up = matrix[last - 1][i]
-        if i == d:
+        if i >= d and d > 0:
             diagonal = matrix[i - d][last - d]
         matrix[last][i] = check_next_step(up) or check_next_step(left) or check_next_step(diagonal)
         left = matrix[last][i]
@@ -78,8 +78,8 @@ def print_is_winner(m, n, d):
 
     return matrix[n - 1][m - 1]
 
-# m = 10
-# n = 6
+# m = 1
+# n = 2
 # d = 1
 #
 # print_table(m, n, d)
