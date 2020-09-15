@@ -1,12 +1,12 @@
-# output_number, diagonal = map(int, input().split())
-# m = [0] * output_number
-# n = [0] * output_number
-# for i in range(output_number):
-#     m[i], n[i] = map(int, input().split())
+output_number, diagonal = map(int, input().split())
+m = [0] * output_number
+n = [0] * output_number
+for i in range(output_number):
+    m[i], n[i] = map(int, input().split())
 # #
 # #
-from test_c.test import *
-from random import randint
+# from test_c.test import *
+# from random import randint
 
 
 def min_side(m, n):
@@ -50,7 +50,6 @@ def is_winner(m, n, diagonal):
             else:
                 return '-'
 
-
     # square table
     if _min_side == _max_side:
         # more or less side then d + (d + 2)
@@ -66,46 +65,37 @@ def is_winner(m, n, diagonal):
             else:
                 return '-'
 
-    # less side more then d + (d + 2)
+    # less side is more then d + (d + 2)
     # counting start position
-    if _max_side % 2 == 0:
-        # start is one
-        remainder = _min_side % (_diagonal_step)
-        if remainder <= diagonal:
-            if remainder % 2 == 0:
-                return '-'
-            else:
-                return '+'
-        else:
-            if remainder % 2 == 0:
-                return '+'
-            else:
-                return '-'
-    else:
+    #print(remainder)
+    if remainder <= diagonal and remainder != 0:
         # start is zero
-        remainder = _min_side % (_diagonal_step)
-        if remainder <= diagonal:
-            if remainder % 2 == 0:
-                return '+'
-            else:
-                return '-'
+        if (_max_side - _min_side + 1) % 2 == 0:
+            return '+'
         else:
-            if remainder % 2 == 0:
-                return '-'
-            else:
-                return '+'
+            return '-'
+    elif remainder == diagonal + 1:
+        return '+'
+    elif remainder == 0:
+        return '+'
+    else:
+        # start is one
+        if (_max_side - _min_side + 1) % 2 == 0:
+            return '-'
+        else:
+            return '+'
 
 
-m = 15
-n = 96
-d = 10
-
-print(is_winner(m, n, d))
-print(print_is_winner(m, n, d))
-
-print_table(m, n, d)
-
+# m = 8
+# n = 56
+# d = 3
 #
+# print(is_winner(m, n, d))
+# print(print_is_winner(m, n, d))
+#
+# print_table(m, n, d)
+
+
 #
 # def refactorer(n):
 #     if n == 0:
@@ -126,6 +116,6 @@ print_table(m, n, d)
 #
 # print(m, n, d)
 # #
-# for i in range(output_number):
-#     print(is_winner(m[i], n[i], diagonal))
-#     # print_is_winner(m[i], n[i], diagonal)
+for i in range(output_number):
+    print(is_winner(m[i], n[i], diagonal))
+    # print_is_winner(m[i], n[i], diagonal)
