@@ -7,7 +7,7 @@
 P0 = 1 / 45
 N0 = 45
 RANG = 4
-N0 = int(RANG*(RANG - 1)/2)
+N0 = int(RANG * (RANG - 1) / 2)
 
 
 def count_intial_number(sequence):
@@ -57,7 +57,7 @@ def count_p_min(n_min):
 
 
 def get_all_move(sequence, tab):
-    #print('initial: ', count_intial_number(sequence))
+    # print('initial: ', count_intial_number(sequence))
     for i in range(0, RANG):
         for j in range(i + 1, RANG):
             if sequence[i] > sequence[j]:
@@ -78,10 +78,10 @@ def get_all_move(sequence, tab):
 #
 # print(s)
 
-seq = [4,1,3,2]
+seq = [4, 3, 2, 1]
 # print(count_min_number(seq))
 # print('------------------------------')
-print(f"{count_intial_number(seq)}: {seq}: min {count_min_number(seq)} const: {N0 - count_intial_number(seq)}")
+
 # print(count_intial_number([2, 4, 3, 1]))
 # print(count_intial_number([2, 1, 3, 4]))
 # print(count_intial_number([1, 2, 3, 4]))
@@ -91,5 +91,12 @@ print(f"{count_intial_number(seq)}: {seq}: min {count_min_number(seq)} const: {N
 
 # print(count_p_min(6))
 #
+
+# import sys
+# sys.stdout = open('file', 'w')
+
+print(f"{count_intial_number(seq)}: {seq}: min {count_min_number(seq)} const: {N0 - count_intial_number(seq)}")
 get_all_move(seq, '\t')
 
+# print(count_intial_number(seq))
+# print(count_min_number(seq))
