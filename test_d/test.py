@@ -23,13 +23,33 @@
 
 import networkx as nx
 import matplotlib.pyplot as plt
+import graph_calc
 
-G=nx.path_graph(4)
+g = nx.Graph()
 
-print("Nodes of graph: ")
-print(G.nodes())
-print("Edges of graph: ")
-print(G.edges())
-nx.draw(G)
+
+def add_vertices(graph, vertices):
+    for el in vertices:
+        graph.add_node(el)
+
+
+def add_edges(graph, edges):
+    for el in edges:
+        graph.add_edge(el[0], el[1])
+
+
+initial_sequence = [1, 2, 3, 4, 5, 6, 7, 10, 9, 8]
+array = []
+
+vertices = graph_calc.Vertices(initial_sequence, array)
+# print(array)
+
+v = graph_calc.parse_to_vertices(array)
+e = graph_calc.parse_to_edges(array)
+# print(e)
+add_vertices(g, v)
+add_edges(g, e)
+
+nx.draw(g)
 plt.savefig("path_graph1.png")
 plt.show()
