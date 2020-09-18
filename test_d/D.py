@@ -6,7 +6,7 @@
 
 P0 = 1 / 45
 N0 = 45
-RANG = 4
+RANG = 6
 N0 = int(RANG * (RANG - 1) / 2)
 
 
@@ -78,7 +78,7 @@ def get_all_move(sequence, tab):
 #
 # print(s)
 
-seq = [4, 3, 2, 1]
+seq = [1,6,2,3,4,5]
 # print(count_min_number(seq))
 # print('------------------------------')
 
@@ -95,8 +95,8 @@ seq = [4, 3, 2, 1]
 # import sys
 # sys.stdout = open('file', 'w')
 
-print(f"{count_intial_number(seq)}: {seq}: min {count_min_number(seq)} const: {N0 - count_intial_number(seq)}")
-get_all_move(seq, '\t')
+# print(f"{count_intial_number(seq)}: {seq}: min {count_min_number(seq)} const: {N0 - count_intial_number(seq)}")
+# get_all_move(seq, '\t')
 
-# print(count_intial_number(seq))
-# print(count_min_number(seq))
+print(count_intial_number(seq))
+print(count_min_number(seq))

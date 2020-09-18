@@ -1,5 +1,7 @@
 from random import randint
 
+rang = 4
+
 
 def swap_if_true(seq, a, b):
     _min = min(a, b)
@@ -11,8 +13,8 @@ def swap_if_true(seq, a, b):
 def simulate(seq, final_seq):
     count = 0
     while seq != final_seq:
-        a = randint(0, 9)
-        b = randint(0, 9)
+        a = randint(0, rang - 1)
+        b = randint(0, rang - 1)
         if a != b:
             swap_if_true(seq, a, b)
             count += 1
@@ -36,22 +38,21 @@ def count_prop_n(seq, final_seq, count, n):
     return num / count
 
 
-final_seq = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-seq = [10,9,8,7,6,5,4,3,2,1]
+final_seq = [1, 2, 3,4]
+# seq = [,, , , ]
+seq = [4, 2, 1, 3]
+count = 100000
 
-count = 10000
+n = simulate_n(seq, final_seq, count)
+print(n / count)
 
-# n = simulate_n(seq, final_seq, count)
-# print(n / count)
-
-row = [0]*1000
-for i in range(1000):
-    tmp = count_prop_n(seq, final_seq, count, i)
-    row[i] = tmp
-    print(i, tmp)
-
-with open('data.txt', 'w') as file:
-    for i in row:
-        file.writelines(str(i))
-        file.writelines('\n')
-
+# row = [0]*1000
+# for i in range(1000):
+#     tmp = count_prop_n(seq, final_seq, count, i)
+#     row[i] = tmp
+#     print(i, tmp)
+#
+# with open('data.txt', 'w') as file:
+#     for i in row:
+#         file.writelines(str(i))
+#         file.writelines('\n')
